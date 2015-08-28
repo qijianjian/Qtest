@@ -42,7 +42,7 @@ typedef struct HLSSegment {
     double duration; /* in seconds */
     int64_t pos;
     int64_t size;
-
+    int rate;       /*silce rate*/
     struct HLSSegment *next;
 } HLSSegment;
 
@@ -183,7 +183,7 @@ static int hls_mux_init(AVFormatContext *s)
 
 /* Create a new segment and append it to the segment list */
 static int hls_append_segment(HLSContext *hls, double duration, int64_t pos,
-                              int64_t size)
+                              int64_t size,int rate)
 {
     HLSSegment *en = av_malloc(sizeof(*en));
     int ret;
@@ -196,8 +196,9 @@ static int hls_append_segment(HLSContext *hls, double duration, int64_t pos,
     en->duration = duration;
     en->pos      = pos;
     en->size     = size;
+    en->rate     = rate;
     en->next     = NULL;
-
+  
     if (!hls->segments)
         hls->segments = en;
     else
@@ -274,7 +275,7 @@ static int hls_window(AVFormatContext *s, int last)
            sequence);
 
     for (en = hls->segments; en; en = en->next) {
-        avio_printf(out, "#EXTINF:%f,\n", en->duration);
+        avio_printf(out, "#EXTINF:%f,%d,\n", en->duration,en->rate);
         if (hls->flags & HLS_SINGLE_FILE)
              avio_printf(out, "#EXT-X-BYTERANGE:%"PRIi64"@%"PRIi64"\n",
                          en->size, en->pos);
@@ -445,7 +446,7 @@ static int hls_write_packet(AVFormatContext *s, AVPacket *pkt)
 
         new_start_pos = avio_tell(hls->avf->pb);
         hls->size = new_start_pos - hls->start_pos;
-        ret = hls_append_segment(hls, hls->duration, hls->start_pos, hls->size);
+        ret = hls_append_segment(hls, hls->duration, hls->start_pos, hls->size,s->bit_rate);
         hls->start_pos = new_start_pos;
         if (ret < 0)
             return ret;
@@ -486,7 +487,7 @@ static int hls_write_trailer(struct AVFormatContext *s)
     if (oc->pb) {
         hls->size = avio_tell(hls->avf->pb) - hls->start_pos;
         avio_closep(&oc->pb);
-        hls_append_segment(hls, hls->duration, hls->start_pos, hls->size);
+        hls_append_segment(hls, hls->duration, hls->start_pos, hls->size,s->bit_rate);
     }
     av_freep(&hls->basename);
     avformat_free_context(oc);
