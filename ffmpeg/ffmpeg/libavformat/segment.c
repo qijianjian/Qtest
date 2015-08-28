@@ -50,7 +50,6 @@ typedef struct SegmentListEntry {
     char *filename;
     struct SegmentListEntry *next;
     int64_t last_duration;
-    int rate;
 } SegmentListEntry;
 
 typedef enum {
@@ -303,8 +302,8 @@ static void segment_list_print_entry(AVIOContext      *list_ioctx,
         avio_printf(list_ioctx, ",%f,%f\n", list_entry->start_time, list_entry->end_time);
         break;
     case LIST_TYPE_M3U8:
-        avio_printf(list_ioctx, "#EXTINF:%f,%d,\n%s\n",
-                    list_entry->end_time - list_entry->start_time, list_entry->rate,list_entry->filename);
+        avio_printf(list_ioctx, "#EXTINF:%f,\n%s\n",
+                    list_entry->end_time - list_entry->start_time, list_entry->filename);
         break;
     case LIST_TYPE_FFCONCAT:
     {
@@ -812,9 +811,6 @@ static int seg_write_packet(AVFormatContext *s, AVPacket *pkt)
         seg->cur_entry.last_duration = pkt->duration;
     }
 
-    /*add rate*/
-    seg->cur_entry.rate = s->bit_rate;
-  
   
     if (seg->segment_frame_count == 0) {
         av_log(s, AV_LOG_VERBOSE, "segment:'%s' starts with packet stream:%d pts:%s pts_time:%s frame:%d\n",
