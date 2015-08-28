@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D55C2E91-0314-4E7B-AF16-5D8F40434E6D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ffmpeg</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8CEE2920F82777E0800DD1AD4CACD1E31E585E07</key>
+		<string>git://source.ffmpeg.org/ffmpeg.git</string>
+		<key>E924361356C88EE1AC6BA7037E9500B2ABC3D838</key>
+		<string>https://github.com/qijianjian/ffmpeg.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ffmpeg.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8CEE2920F82777E0800DD1AD4CACD1E31E585E07</key>
+		<string>..ffmpeg/ffmpeg/</string>
+		<key>E924361356C88EE1AC6BA7037E9500B2ABC3D838</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/qijianjian/ffmpeg.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E924361356C88EE1AC6BA7037E9500B2ABC3D838</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E924361356C88EE1AC6BA7037E9500B2ABC3D838</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ffmpeg</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8CEE2920F82777E0800DD1AD4CACD1E31E585E07</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ffmpeg</string>
+		</dict>
+	</array>
+</dict>
+</plist>
