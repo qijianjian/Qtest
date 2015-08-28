@@ -20,7 +20,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8CEE2920F82777E0800DD1AD4CACD1E31E585E07</key>
-		<string>..ffmpeg/ffmpeg/</string>
+		<string>..ffmpeg/ffmpeg</string>
 		<key>E924361356C88EE1AC6BA7037E9500B2ABC3D838</key>
 		<string>..</string>
 	</dict>
